@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app='TestApp'>
+<head>
+	<title>ngDrupal Test</title>
+</head>
+<body ng-controller='TestCtrl'>
+	<button ng-click='login()'>
+		Login
+	</button>
+	<button ng-click='boards()'>
+		Get Boards
+	</button>
+
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+	<script type="text/javascript" src='./ngDrupal.js'></script>
+
+	<script type="text/javascript">
+		var app = angular.module('TestApp', [
+			'stefanoschrs.ngDrupal'
+		]);
+
+		app.run(['Drupal', function(Drupal){
+			Drupal.init({
+				path: 'http://localhost/ngDrupal/drupal/api/'
+			});
+		}])
+
+		app.controller('TestCtrl', ['$scope', 'Drupal', function($scope, Drupal){
+			$scope.user = {
+				username: 'test_user',
+				password: '123123123aA!'
+			};
+
+			$scope.login = function(){
+				var CSRFhack = true;
+				Drupal.login($scope.user, function(err, res){
+					console.log(err, res);					
+					if(err && err[0] === 'CSRF validation failed' && CSRFhack{
+						CSRFhack = false;
+						$scope.login();
+					}
+
+					// Do something
+				});
+			};
+			
+			$scope.boards = function(){
+				Drupal.views('board_services', function(err, res){
+					console.log(err, res);
+
+					// Do something
+				});			
+			};
+		}]);
+	</script>
+</body>
+</html>

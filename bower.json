@@ -1,0 +1,26 @@
+{
+  "name": "ng-drupal",
+  "version": "0.0.1",
+  "authors": [
+    "stefanoschrs <stefanoschrs@hotmail.com>"
+  ],
+  "description": "Angular factory to easy connect to Drupal using Services module.",
+  "main": "ngDrupal.js",
+  "license": "MIT",
+  "keywords": [
+    "angular",
+    "drupal",
+    "services",
+  ],  
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.5"
+  }
+}
