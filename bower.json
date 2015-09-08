@@ -10,7 +10,7 @@
   "keywords": [
     "angular",
     "drupal",
-    "services",
+    "services"
   ],  
   "ignore": [
     "**/.*",
